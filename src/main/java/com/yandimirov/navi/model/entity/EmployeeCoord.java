@@ -1,6 +1,5 @@
 package com.yandimirov.navi.model.entity;
 
-import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,6 +9,6 @@ import javax.persistence.*;
 @DiscriminatorValue("employee")
 public class EmployeeCoord extends Coord{
     @OneToOne
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "entity_id")
     private Employee employee;
 }

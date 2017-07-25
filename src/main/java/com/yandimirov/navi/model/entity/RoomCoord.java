@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue("room")
 public class RoomCoord extends Coord{
     @OneToOne
-    @JoinColumn(name = "room_id")
+    @JoinColumn(name = "entity_id")
     @Where(clause = "-room_id = id")
     private Room room;
 }
