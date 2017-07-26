@@ -23,7 +23,7 @@ public class OfficeController extends AbstractController<Office, OfficeDto>{
     @ResponseStatus(HttpStatus.OK)
     @JsonView(RequestView.Office.class)
     public Office findOne(@PathVariable Long id) {
-        LOGGER.info("Find Office With ID = {}", id);
+        LOGGER.info("Finding Office With ID = {}", id);
         return officeService.findOne(id);
     }
 
@@ -32,7 +32,7 @@ public class OfficeController extends AbstractController<Office, OfficeDto>{
     @ResponseStatus(HttpStatus.OK)
     @JsonView(RequestView.Office.class)
     public List<Office> findAll() {
-        LOGGER.info("Find All Offices");
+        LOGGER.info("Finding All Offices");
         return officeService.findAll();
     }
 
