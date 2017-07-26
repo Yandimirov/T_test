@@ -29,7 +29,7 @@ public class RoomController extends AbstractController<Room, Room> {
     @Override
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Room findOne(@PathVariable("id") long id) {
+    public Room findOne(@PathVariable("id") Long id) {
         LOGGER.info("Finding Room With ID = {}", id);
         return roomService.findOne(id);
     }
@@ -45,7 +45,7 @@ public class RoomController extends AbstractController<Room, Room> {
     @Override
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Room update(@PathVariable("id") long id, @RequestBody Room room) {
+    public Room update(@PathVariable("id") Long id, @RequestBody Room room) {
         LOGGER.info("Update Room With ID = {}, {}", id, room);
         return roomService.save(room);
     }
@@ -53,7 +53,7 @@ public class RoomController extends AbstractController<Room, Room> {
     @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable("id") long id) {
+    public void delete(@PathVariable("id") Long id) {
         LOGGER.info("Delete Room With ID = {}", id);
         roomService.delete(id);
     }

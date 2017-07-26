@@ -1,5 +1,7 @@
 package com.yandimirov.navi.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.yandimirov.navi.config.RequestView;
 import com.yandimirov.navi.model.dto.EmployeeDto;
 import com.yandimirov.navi.model.entity.Employee;
 import com.yandimirov.navi.service.EmployeeService;
@@ -21,6 +23,7 @@ public class EmployeeController extends AbstractController<Employee, EmployeeDto
     @Override
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @JsonView(RequestView.Employee.class)
     public List<Employee> findAll() {
         LOGGER.info("Finding All Employees");
         return employeeService.findAll();
@@ -29,7 +32,8 @@ public class EmployeeController extends AbstractController<Employee, EmployeeDto
     @Override
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Employee findOne(@PathVariable("id") long id) {
+    @JsonView(RequestView.Employee.class)
+    public Employee findOne(@PathVariable("id") Long id) {
         LOGGER.info("Finding Employee With ID = {}", id);
         return employeeService.findOne(id);
     }
@@ -37,6 +41,7 @@ public class EmployeeController extends AbstractController<Employee, EmployeeDto
     @Override
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @JsonView(RequestView.Employee.class)
     public Employee create(@RequestBody EmployeeDto employeeDto) {
         LOGGER.info("Creating Employee = {}", employeeDto);
         return employeeService.save(employeeDto);
@@ -45,7 +50,8 @@ public class EmployeeController extends AbstractController<Employee, EmployeeDto
     @Override
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Employee update(@PathVariable("id") long id, @RequestBody EmployeeDto employeeDto) {
+    @JsonView(RequestView.Employee.class)
+    public Employee update(@PathVariable("id") Long id, @RequestBody EmployeeDto employeeDto) {
         LOGGER.info("Updating Employee With ID = {}, {}", id, employeeDto);
         return employeeService.save(employeeDto);
     }
@@ -53,7 +59,8 @@ public class EmployeeController extends AbstractController<Employee, EmployeeDto
     @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable("id") long id) {
+    @JsonView(RequestView.Employee.class)
+    public void delete(@PathVariable("id") Long id) {
         LOGGER.info("Deleting Employee With ID = {}", id);
         employeeService.delete(id);
     }

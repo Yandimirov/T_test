@@ -1,5 +1,7 @@
 package com.yandimirov.navi.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.yandimirov.navi.config.RequestView;
 import com.yandimirov.navi.model.entity.City;
 import com.yandimirov.navi.service.CityService;
 import lombok.extern.java.Log;
@@ -19,6 +21,7 @@ public class CityController extends AbstractController<City, City> {
     @Override
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @JsonView(RequestView.City.class)
     public List<City> findAll() {
         LOGGER.info("Finding All Cities");
         return cityService.findAll();
@@ -27,7 +30,8 @@ public class CityController extends AbstractController<City, City> {
     @Override
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public City findOne(@PathVariable("id") long id) {
+    @JsonView(RequestView.City.class)
+    public City findOne(@PathVariable("id") Long id) {
         LOGGER.info("Finding City With ID = {}", id);
         return cityService.findOne(id);
     }
@@ -35,6 +39,7 @@ public class CityController extends AbstractController<City, City> {
     @Override
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @JsonView(RequestView.City.class)
     public City create(@RequestBody City city) {
         LOGGER.info("Creating City = {}", city);
         return cityService.save(city);
@@ -43,7 +48,8 @@ public class CityController extends AbstractController<City, City> {
     @Override
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public City update(@PathVariable("id") long id, @RequestBody City city) {
+    @JsonView(RequestView.City.class)
+    public City update(@PathVariable("id") Long id, @RequestBody City city) {
         LOGGER.info("Update City With ID = {}, {}", id, city);
         return cityService.save(city);
     }
@@ -51,7 +57,8 @@ public class CityController extends AbstractController<City, City> {
     @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable("id") long id) {
+    @JsonView(RequestView.City.class)
+    public void delete(@PathVariable("id") Long id) {
         LOGGER.info("Deleting City With ID = {}", id);
         cityService.delete(id);
     }

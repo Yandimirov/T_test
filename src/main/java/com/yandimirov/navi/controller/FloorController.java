@@ -1,5 +1,7 @@
 package com.yandimirov.navi.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.yandimirov.navi.config.RequestView;
 import com.yandimirov.navi.model.dto.FloorDto;
 import com.yandimirov.navi.model.entity.Floor;
 import com.yandimirov.navi.service.BaseService;
@@ -20,7 +22,8 @@ public class FloorController extends AbstractController<Floor, FloorDto>{
     @Override
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Floor findOne(@PathVariable("id") long id) {
+    @JsonView(RequestView.Floor.class)
+    public Floor findOne(@PathVariable("id") Long id) {
         LOGGER.info("Finding Floor With ID = {}", id);
         return floorService.findOne(id);
     }
@@ -28,6 +31,7 @@ public class FloorController extends AbstractController<Floor, FloorDto>{
     @Override
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @JsonView(RequestView.Floor.class)
     public List<Floor> findAll() {
         LOGGER.info("Finding All Floors");
         return floorService.findAll();
@@ -36,6 +40,7 @@ public class FloorController extends AbstractController<Floor, FloorDto>{
     @Override
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @JsonView(RequestView.Floor.class)
     public Floor create(@RequestBody FloorDto floorDto) {
         LOGGER.info("Creating Floor = {}", floorDto);
         return floorService.save(floorDto);
@@ -44,7 +49,8 @@ public class FloorController extends AbstractController<Floor, FloorDto>{
     @Override
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Floor update(@PathVariable("id") long id, @RequestBody FloorDto floorDto) {
+    @JsonView(RequestView.Floor.class)
+    public Floor update(@PathVariable("id") Long id, @RequestBody FloorDto floorDto) {
         LOGGER.info("Updating Floor With ID = {}, {}", id, floorDto);
         return floorService.save(floorDto);
     }
@@ -52,7 +58,8 @@ public class FloorController extends AbstractController<Floor, FloorDto>{
     @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable("id") long id) {
+    @JsonView(RequestView.Floor.class)
+    public void delete(@PathVariable("id") Long id) {
         LOGGER.info("Deleting Floor With ID = {}", id);
         floorService.delete(id);
     }

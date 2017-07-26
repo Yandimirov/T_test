@@ -1,5 +1,7 @@
 package com.yandimirov.navi.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.yandimirov.navi.config.RequestView;
 import com.yandimirov.navi.model.dto.LocationDto;
 import com.yandimirov.navi.model.entity.Location;
 import com.yandimirov.navi.service.LocationService;
@@ -15,11 +17,11 @@ public class LocationController extends AbstractController<Location, LocationDto
     @Autowired
     private LocationService locationService;
 
-
     @Override
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Location findOne(@PathVariable("id") long id) {
+    @JsonView(RequestView.Location.class)
+    public Location findOne(@PathVariable("id") Long id) {
         LOGGER.info("Finding Location With ID = {}", id);
         return locationService.findOne(id);
     }
@@ -27,6 +29,7 @@ public class LocationController extends AbstractController<Location, LocationDto
     @Override
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @JsonView(RequestView.Location.class)
     public List<Location> findAll() {
         LOGGER.info("Finding All Locations");
         return locationService.findAll();
@@ -35,6 +38,7 @@ public class LocationController extends AbstractController<Location, LocationDto
     @Override
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @JsonView(RequestView.Location.class)
     public Location create(@RequestBody LocationDto locationDto) {
         LOGGER.info("Creating Location = {}", locationDto);
         return locationService.save(locationDto);
@@ -43,7 +47,8 @@ public class LocationController extends AbstractController<Location, LocationDto
     @Override
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Location update(@PathVariable("id") long id, @RequestBody LocationDto locationDto) {
+    @JsonView(RequestView.Location.class)
+    public Location update(@PathVariable("id") Long id, @RequestBody LocationDto locationDto) {
         LOGGER.info("Updating Location With ID = {}, {}", id, locationDto);
         return locationService.save(locationDto);
     }
@@ -51,7 +56,8 @@ public class LocationController extends AbstractController<Location, LocationDto
     @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable("id") long id) {
+    @JsonView(RequestView.Location.class)
+    public void delete(@PathVariable("id") Long id) {
         LOGGER.info("Deleting Location With ID = {}", id);
         locationService.delete(id);
     }

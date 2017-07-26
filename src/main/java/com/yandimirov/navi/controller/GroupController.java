@@ -1,5 +1,7 @@
 package com.yandimirov.navi.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.yandimirov.navi.config.RequestView;
 import com.yandimirov.navi.model.entity.Group;
 import com.yandimirov.navi.service.GroupService;
 import lombok.extern.java.Log;
@@ -20,6 +22,7 @@ public class GroupController extends AbstractController<Group, Group> {
     @Override
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @JsonView(RequestView.Group.class)
     public List<Group> findAll() {
         LOGGER.info("Finding All Groups");
         return groupService.findAll();
@@ -28,7 +31,8 @@ public class GroupController extends AbstractController<Group, Group> {
     @Override
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Group findOne(@PathVariable("id") long id) {
+    @JsonView(RequestView.Group.class)
+    public Group findOne(@PathVariable("id") Long id) {
         LOGGER.info("Finding Group With ID = {}", id);
         return groupService.findOne(id);
     }
@@ -36,6 +40,7 @@ public class GroupController extends AbstractController<Group, Group> {
     @Override
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @JsonView(RequestView.Group.class)
     public Group create(@RequestBody Group group) {
         LOGGER.info("Creating Group = {}", group);
         return groupService.save(group);
@@ -44,7 +49,8 @@ public class GroupController extends AbstractController<Group, Group> {
     @Override
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Group update(@PathVariable("id") long id, @RequestBody Group group) {
+    @JsonView(RequestView.Group.class)
+    public Group update(@PathVariable("id") Long id, @RequestBody Group group) {
         LOGGER.info("Updating Group With ID = {}, {}", id, group);
         return groupService.save(group);
     }
@@ -52,7 +58,8 @@ public class GroupController extends AbstractController<Group, Group> {
     @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable("id") long id) {
+    @JsonView(RequestView.Group.class)
+    public void delete(@PathVariable("id") Long id) {
         LOGGER.info("Deleting Group With ID = {}", id);
         groupService.delete(id);
     }

@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface BaseController<T, E> {
 
-    T findOne(long id);
+    T findOne(Long id);
 
     List<T> findAll();
 
     T create(E e);
 
-    T update(long id, E e);
+    T update(Long id, E e);
 
-    void delete(long id);
+    void delete(Long id);
 }
