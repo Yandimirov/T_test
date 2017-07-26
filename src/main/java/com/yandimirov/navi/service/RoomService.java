@@ -5,13 +5,5 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface RoomService {
-
-    List<Room> findAll();
-
-    Room findOne(long id);
-
-    Room save(Room room);
-
-    void delete(long id);
+public interface RoomService extends BaseService<Room, Room> {
 }

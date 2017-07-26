@@ -11,18 +11,18 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "floors")
+@Entity(name = "FLOORS")
 public class Floor {
 
     @Id
     @GeneratedValue
-    @Column(name = "floor_id")
+    @Column(name = "FLOOR_ID")
     private long id;
 
-    @Column(name = "floor_name")
+    @Column(name = "FLOOR_NAME")
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "office_id")
+    @JoinColumn(name = "OFFICE_ID")
     private Office office;
 }

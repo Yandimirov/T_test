@@ -11,21 +11,21 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "offices")
+@Entity(name = "OFFICES")
 public class Office {
 
     @Id
     @GeneratedValue
-    @Column(name = "office_id")
+    @Column(name = "OFFICE_ID")
     private long id;
 
-    @Column(name = "office_name")
+    @Column(name = "OFFICE_NAME")
     private String name;
 
-    @Column(name = "address")
+    @Column(name = "ADDRESS")
     private String address;
 
     @ManyToOne
-    @JoinColumn(name = "city_id")
+    @JoinColumn(name = "CITY_ID")
     private City city;
 }

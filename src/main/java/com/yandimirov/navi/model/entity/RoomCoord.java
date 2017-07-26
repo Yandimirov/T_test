@@ -1,19 +1,13 @@
 package com.yandimirov.navi.model.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.hibernate.annotations.Where;
-
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity
-@DiscriminatorValue("room")
-public class RoomCoord extends Coord{
-    @OneToOne
-    @JoinColumn(name = "entity_id")
-    @Where(clause = "-room_id = id")
+@NoArgsConstructor
+@AllArgsConstructor
+public class RoomCoord extends Coord {
+
     private Room room;
 }

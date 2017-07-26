@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnTransformer;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,14 +14,17 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "rooms")
-public class Room {
+@Entity(name = "CONTRACTS")
+public class Contract {
 
     @Id
     @GeneratedValue
-    @Column(name = "ROOM_ID")
+    @Column(name = "CONTRACT_ID")
     private long id;
 
-    @Column(name = "ROOM_NAME")
+    @Column(name = "CONTRACT_NAME")
     private String name;
+
+    @Column(name = "SQUARE_METER_PRICE")
+    private long squareMeterPrice;
 }

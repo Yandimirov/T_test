@@ -2,12 +2,15 @@ package com.yandimirov.navi.mapper.impl;
 
 import com.yandimirov.navi.mapper.EmployeeMapper;
 import com.yandimirov.navi.model.dto.EmployeeDto;
+import com.yandimirov.navi.model.entity.City;
 import com.yandimirov.navi.model.entity.Employee;
+import com.yandimirov.navi.model.entity.Group;
 import com.yandimirov.navi.repository.CityRepository;
 import com.yandimirov.navi.repository.GroupRepository;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 @Component
 public class EmployeeMapperImpl implements EmployeeMapper {
@@ -19,7 +22,10 @@ public class EmployeeMapperImpl implements EmployeeMapper {
     private GroupRepository groupRepository;
 
     @Override
-    public Employee mapDtoToEntity(@NonNull EmployeeDto employeeDto) {
+    public Employee mapDtoToEntity(EmployeeDto employeeDto) {
+        if (ObjectUtils.isEmpty(employeeDto)) {
+            return null;
+        }
         return Employee.builder()
                 .active(employeeDto.isActive())
                 .birthDate(employeeDto.getBirthDate())
@@ -32,12 +38,28 @@ public class EmployeeMapperImpl implements EmployeeMapper {
     }
 
     @Override
-    public EmployeeDto mapEntityToDto(@NonNull Employee employee) {
+    public EmployeeDto mapEntityToDto(Employee employee) {
+        if (ObjectUtils.isEmpty(employee)) {
+            return null;
+        }
+
+        City city = employee.getCity();
+        long cityId = 0;
+        if (!ObjectUtils.isEmpty(city)) {
+            cityId = city.getId();
+        }
+
+        Group group = employee.getGroup();
+        long groupId = 0;
+        if (!ObjectUtils.isEmpty(group)) {
+            groupId = group.getId();
+        }
+
         return EmployeeDto.builder()
                 .active(employee.isActive())
                 .birthDate(employee.getBirthDate())
-                .cityId(employee.getCity().getId())
-                .groupId(employee.getGroup().getId())
+                .cityId(cityId)
+                .groupId(groupId)
                 .id(employee.getId())
                 .name(employee.getName())
                 .surName(employee.getSurName())

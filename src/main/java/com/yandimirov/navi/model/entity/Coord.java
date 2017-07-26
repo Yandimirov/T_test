@@ -1,30 +1,38 @@
 package com.yandimirov.navi.model.entity;
 
-
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+
 @Data
-@Inheritance
-@Entity(name = "coords")
-@DiscriminatorColumn(name = "coord_discriminator", discriminatorType = DiscriminatorType.STRING)
-public abstract class Coord {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity(name = "COORDS")
+public class Coord {
 
     @Id
     @GeneratedValue
-    @Column(name = "coord_id")
+    @Column(name = "COORD_ID")
     private long id;
 
-    @Column(name = "coord_addr")
-    private String addr;
+    @Column(name = "COORD_ADDR")
+    private String address;
 
     @ManyToOne
-    @JoinColumn(name = "location_id")
+    @JoinColumn(name = "LOCATION_ID")
     private Location location;
 
     @ManyToOne
-    @JoinColumn(name = "floor_id")
+    @JoinColumn(name = "FLOOR_ID")
     private Floor floor;
+
+    @Column(name = "ENTITY_ID")
+    @JsonIgnore
+    private long entityId;
 }

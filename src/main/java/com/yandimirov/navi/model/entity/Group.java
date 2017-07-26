@@ -14,17 +14,17 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "groups")
+@Entity(name = "GROUPS")
 public class Group {
 
     @Id
     @GeneratedValue
-    @Column(name = "group_id")
+    @Column(name = "GROUP_ID")
     private long id;
 
-    @Column(name = "group_name", unique = true)
+    @Column(name = "GROUP_NAME")
     private String name;
 
-    @Column(name = "permission")
+    @Column(name = "PERMISSION")
     private int permission;
 }

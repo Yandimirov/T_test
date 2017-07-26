@@ -5,26 +5,27 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "locations")
+@Entity(name = "LOCATIONS")
 public class Location {
 
     @Id
     @GeneratedValue
-    @Column(name = "location_id")
+    @Column(name = "LOCATION_ID")
     private long id;
 
-    @Column(name = "location_name")
+    @Column(name = "LOCATION_NAME")
     private String name;
 
-    @Column(name = "square")
+    @Column(name = "SQUARE")
     private int square;
+
+    @ManyToOne
+    @JoinColumn(name = "CONTRACT_ID")
+    private Contract contract;
 }

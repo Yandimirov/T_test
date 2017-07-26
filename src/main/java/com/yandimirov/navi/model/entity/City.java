@@ -14,14 +14,14 @@ import javax.persistence.Id;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "cities")
+@Entity(name = "CITIES")
 public class City {
 
     @Id
     @GeneratedValue
-    @Column(name = "city_id")
+    @Column(name = "CITY_ID")
     private long id;
 
-    @Column(name = "city_name", unique = true)
+    @Column(name = "CITY_NAME")
     private String name;
 }

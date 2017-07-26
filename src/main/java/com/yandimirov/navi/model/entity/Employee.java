@@ -13,34 +13,34 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "employees")
+@Entity(name = "EMPLOYEES")
 public class Employee {
 
     @Id
     @GeneratedValue
-    @Column(name = "employee_id")
+    @Column(name = "EMPLOYEE_ID")
     private long id;
 
-    @Column(name = "employee_name")
+    @Column(name = "EMPLOYEE_NAME")
     private String name;
 
-    @Column(name = "employee_surname")
+    @Column(name = "EMPLOYEE_SURNAME")
     private String surName;
 
-    @Column(name = "birth_date")
+    @Column(name = "BIRTH_DATE")
     private Date birthDate;
 
-    @Column(name = "employee_active")
+    @Column(name = "EMPLOYEE_ACTIVE")
     private boolean active;
 
-    @Column(name = "phone_num")
+    @Column(name = "PHONE_NUM")
     private String phoneNum;
 
     @ManyToOne
-    @JoinColumn(name = "city_id")
+    @JoinColumn(name = "CITY_ID")
     private City city;
 
     @ManyToOne
-    @JoinColumn(name = "group_id")
+    @JoinColumn(name = "GROUP_ID")
     private Group group;
 }

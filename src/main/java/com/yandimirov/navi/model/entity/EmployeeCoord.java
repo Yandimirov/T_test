@@ -1,14 +1,13 @@
 package com.yandimirov.navi.model.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import javax.persistence.*;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity
-@DiscriminatorValue("employee")
-public class EmployeeCoord extends Coord{
-    @OneToOne
-    @JoinColumn(name = "entity_id")
+@NoArgsConstructor
+@AllArgsConstructor
+public class EmployeeCoord extends Coord {
+
     private Employee employee;
 }
