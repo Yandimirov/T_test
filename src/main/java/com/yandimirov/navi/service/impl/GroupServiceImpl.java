@@ -24,7 +24,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Group findOne(long id) {
+    public Group findOne(Long id) {
         return groupRepository.findOne(id);
     }
 
@@ -34,7 +34,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         groupRepository.delete(id);
     }
 }

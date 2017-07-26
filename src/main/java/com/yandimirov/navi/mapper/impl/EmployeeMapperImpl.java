@@ -27,7 +27,7 @@ public class EmployeeMapperImpl implements EmployeeMapper {
             return null;
         }
         return Employee.builder()
-                .active(employeeDto.isActive())
+                .active(employeeDto.getActive())
                 .birthDate(employeeDto.getBirthDate())
                 .city(cityRepository.findOne(employeeDto.getCityId()))
                 .group(groupRepository.findOne(employeeDto.getGroupId()))
@@ -56,7 +56,7 @@ public class EmployeeMapperImpl implements EmployeeMapper {
         }
 
         return EmployeeDto.builder()
-                .active(employee.isActive())
+                .active(employee.getActive())
                 .birthDate(employee.getBirthDate())
                 .cityId(cityId)
                 .groupId(groupId)

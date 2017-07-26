@@ -29,7 +29,7 @@ public class FloorServiceImpl implements FloorService{
     }
 
     @Override
-    public Floor findOne(long id) {
+    public Floor findOne(Long id) {
         return floorRepository.findOne(id);
     }
 
@@ -40,7 +40,7 @@ public class FloorServiceImpl implements FloorService{
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         floorRepository.delete(id);
     }
 }

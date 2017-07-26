@@ -1,5 +1,7 @@
 package com.yandimirov.navi.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.yandimirov.navi.config.RequestView;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,15 +19,19 @@ public class Office {
     @Id
     @GeneratedValue
     @Column(name = "OFFICE_ID")
-    private long id;
+    @JsonView(RequestView.Base.class)
+    private Long id;
 
     @Column(name = "OFFICE_NAME")
+    @JsonView(RequestView.Base.class)
     private String name;
 
     @Column(name = "ADDRESS")
+    @JsonView(RequestView.Office.class)
     private String address;
 
     @ManyToOne
     @JoinColumn(name = "CITY_ID")
+    @JsonView(RequestView.Office.class)
     private City city;
 }

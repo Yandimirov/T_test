@@ -7,9 +7,9 @@ import lombok.Data;
 @Builder
 public class FloorDto {
 
-    private long id;
+    private Long id;
 
     private String name;
 
-    private long officeId;
+    private Long officeId;
 }

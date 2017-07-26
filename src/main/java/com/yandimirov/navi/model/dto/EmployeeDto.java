@@ -9,7 +9,7 @@ import java.util.Date;
 @Builder
 public class EmployeeDto {
 
-    private long id;
+    private Long id;
 
     private String name;
 
@@ -17,11 +17,11 @@ public class EmployeeDto {
 
     private Date birthDate;
 
-    private long cityId;
+    private Long cityId;
 
     private String phoneNum;
 
-    private boolean active;
+    private Boolean active;
 
-    private long groupId;
+    private Long groupId;
 }

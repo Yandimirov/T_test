@@ -29,7 +29,7 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public Location findOne(long id) {
+    public Location findOne(Long id) {
         return locationRepository.findOne(id);
     }
 
@@ -39,7 +39,7 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         locationRepository.delete(id);
     }
 }

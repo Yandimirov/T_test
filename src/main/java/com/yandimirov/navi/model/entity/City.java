@@ -1,5 +1,7 @@
 package com.yandimirov.navi.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.yandimirov.navi.config.RequestView;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,8 +22,10 @@ public class City {
     @Id
     @GeneratedValue
     @Column(name = "CITY_ID")
-    private long id;
+    @JsonView(RequestView.Base.class)
+    private Long id;
 
     @Column(name = "CITY_NAME")
+    @JsonView(RequestView.Base.class)
     private String name;
 }

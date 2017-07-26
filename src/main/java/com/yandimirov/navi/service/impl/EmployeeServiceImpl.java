@@ -29,7 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee findOne(long id) {
+    public Employee findOne(Long id) {
         return employeeRepository.findOne(id);
     }
 
@@ -39,7 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         employeeRepository.delete(id);
     }
 }

@@ -1,5 +1,7 @@
 package com.yandimirov.navi.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.yandimirov.navi.config.RequestView;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,15 +19,19 @@ public class Location {
     @Id
     @GeneratedValue
     @Column(name = "LOCATION_ID")
-    private long id;
+    @JsonView(RequestView.Base.class)
+    private Long id;
 
     @Column(name = "LOCATION_NAME")
+    @JsonView(RequestView.Base.class)
     private String name;
 
     @Column(name = "SQUARE")
-    private int square;
+    @JsonView(RequestView.Location.class)
+    private Integer square;
 
     @ManyToOne
     @JoinColumn(name = "CONTRACT_ID")
+    @JsonView(RequestView.Location.class)
     private Contract contract;
 }

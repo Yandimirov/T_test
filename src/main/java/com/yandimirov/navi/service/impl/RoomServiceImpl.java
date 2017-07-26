@@ -24,7 +24,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Room findOne(long id) {
+    public Room findOne(Long id) {
         return roomRepository.findOne(id);
     }
 
@@ -34,7 +34,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         roomRepository.delete(id);
     }
 }

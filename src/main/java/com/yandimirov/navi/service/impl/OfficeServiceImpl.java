@@ -29,7 +29,7 @@ public class OfficeServiceImpl implements OfficeService{
     }
 
     @Override
-    public Office findOne(long id) {
+    public Office findOne(Long id) {
         return officeRepository.findOne(id);
     }
 
@@ -40,7 +40,7 @@ public class OfficeServiceImpl implements OfficeService{
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         officeRepository.delete(id);
     }
 }

@@ -38,7 +38,7 @@ public class CoordServiceImpl implements CoordService {
     }
 
     @Override
-    public Coord findOne(long id) {
+    public Coord findOne(Long id) {
         Coord coord = coordRepository.findOne(id);
         return coordMapper.mapCoordToExtendedCoord(coord);
     }
@@ -50,7 +50,7 @@ public class CoordServiceImpl implements CoordService {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         coordRepository.delete(id);
     }
 }

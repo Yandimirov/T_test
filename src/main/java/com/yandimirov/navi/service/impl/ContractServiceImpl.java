@@ -22,7 +22,7 @@ public class ContractServiceImpl implements ContractService{
     }
 
     @Override
-    public Contract findOne(long id) {
+    public Contract findOne(Long id) {
         return contractRepository.findOne(id);
     }
 
@@ -32,7 +32,7 @@ public class ContractServiceImpl implements ContractService{
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         contractRepository.delete(id);
     }
 }

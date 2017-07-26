@@ -21,7 +21,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public City findOne(long id) {
+    public City findOne(Long id) {
         return cityRepository.findOne(id);
     }
 
@@ -31,7 +31,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         cityRepository.delete(id);
     }
 }

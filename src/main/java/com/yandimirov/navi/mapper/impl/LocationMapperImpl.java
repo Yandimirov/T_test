@@ -37,7 +37,7 @@ public class LocationMapperImpl implements LocationMapper {
         }
 
         Contract contract = location.getContract();
-        long contractId = 0;
+        Long contractId = 0L;
         if (!ObjectUtils.isEmpty(contract)) {
             contractId = contract.getId();
         }

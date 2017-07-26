@@ -45,13 +45,13 @@ public class CoordMapperImpl implements CoordMapper {
         }
 
         Floor floor = coord.getFloor();
-        long floorId = 0;
+        Long floorId = 0L;
         if (!ObjectUtils.isEmpty(floor)) {
             floorId = floor.getId();
         }
 
         Location location = coord.getLocation();
-        long locationId = 0;
+        Long locationId = 0L;
         if (!ObjectUtils.isEmpty(location)) {
             locationId = location.getId();
         }
@@ -71,8 +71,8 @@ public class CoordMapperImpl implements CoordMapper {
             return null;
         }
 
-        long entityId = coord.getEntityId();
-        if (entityId == 0) {
+        Long entityId = coord.getEntityId();
+        if (ObjectUtils.isEmpty(entityId) || entityId == 0) {
             return coord;
         } else if (entityId > 0) {
             EmployeeCoord employeeCoord = new EmployeeCoord();

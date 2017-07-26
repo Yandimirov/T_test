@@ -36,7 +36,7 @@ public class FloorMapperImpl implements FloorMapper{
         }
 
         Office office = floor.getOffice();
-        long officeId = 0;
+        Long officeId = 0L;
         if(!ObjectUtils.isEmpty(office)){
             officeId = office.getId();
         }

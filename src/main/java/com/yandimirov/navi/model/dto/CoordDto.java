@@ -7,13 +7,13 @@ import lombok.Data;
 @Builder
 public class CoordDto {
 
-    private long id;
+    private Long id;
 
-    private long entityId;
+    private Long entityId;
 
-    private long floorId;
+    private Long floorId;
 
     private String address;
 
-    private long locationId;
+    private Long locationId;
 }

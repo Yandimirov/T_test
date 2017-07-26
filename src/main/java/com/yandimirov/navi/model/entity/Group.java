@@ -1,5 +1,7 @@
 package com.yandimirov.navi.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.yandimirov.navi.config.RequestView;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,11 +22,14 @@ public class Group {
     @Id
     @GeneratedValue
     @Column(name = "GROUP_ID")
-    private long id;
+    @JsonView(RequestView.Base.class)
+    private Long id;
 
     @Column(name = "GROUP_NAME")
+    @JsonView(RequestView.Base.class)
     private String name;
 
     @Column(name = "PERMISSION")
-    private int permission;
+    @JsonView(RequestView.Group.class)
+    private Integer permission;
 }
