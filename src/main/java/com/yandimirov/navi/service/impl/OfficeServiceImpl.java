@@ -25,9 +25,7 @@ public class OfficeServiceImpl implements OfficeService{
 
     @Override
     public List<Office> findAll() {
-        return StreamSupport
-                .stream(officeRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        return officeRepository.findAll();
     }
 
     @Override

@@ -25,9 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> findAll() {
-        return StreamSupport
-                .stream(employeeRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        return employeeRepository.findAll();
     }
 
     @Override

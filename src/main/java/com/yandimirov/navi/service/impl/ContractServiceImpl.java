@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -20,9 +18,7 @@ public class ContractServiceImpl implements ContractService{
 
     @Override
     public List<Contract> findAll() {
-        return StreamSupport
-                .stream(contractRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        return contractRepository.findAll();
     }
 
     @Override

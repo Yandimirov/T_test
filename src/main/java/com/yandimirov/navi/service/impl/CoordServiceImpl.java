@@ -30,8 +30,9 @@ public class CoordServiceImpl implements CoordService {
 
     @Override
     public List<Coord> findAll() {
-        return StreamSupport
-                .stream(coordRepository.findAll().spliterator(), false)
+        return coordRepository
+                .findAll()
+                .stream()
                 .map(coord -> coordMapper.mapCoordToExtendedCoord(coord))
                 .collect(Collectors.toList());
     }

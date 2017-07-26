@@ -8,9 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class CityServiceImpl implements CityService {
@@ -20,9 +17,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public List<City> findAll() {
-        return StreamSupport
-                .stream(cityRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        return cityRepository.findAll();
     }
 
     @Override

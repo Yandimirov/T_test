@@ -25,9 +25,7 @@ public class FloorServiceImpl implements FloorService{
 
     @Override
     public List<Floor> findAll() {
-        return StreamSupport
-                .stream(floorRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        return floorRepository.findAll();
     }
 
     @Override

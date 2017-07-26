@@ -20,9 +20,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public List<Group> findAll() {
-        return StreamSupport
-                .stream(groupRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        return groupRepository.findAll();
     }
 
     @Override

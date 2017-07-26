@@ -20,9 +20,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<Room> findAll() {
-        return StreamSupport
-                .stream(roomRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        return roomRepository.findAll();
     }
 
     @Override
