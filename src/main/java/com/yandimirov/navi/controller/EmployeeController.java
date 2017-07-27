@@ -7,6 +7,9 @@ import com.yandimirov.navi.model.entity.Employee;
 import com.yandimirov.navi.service.EmployeeService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,12 +24,16 @@ public class EmployeeController extends AbstractController<Employee, EmployeeDto
     private EmployeeService employeeService;
 
     @Override
+    public List<Employee> findAll(){
+        return null;
+    }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @JsonView(RequestView.Employee.class)
-    public List<Employee> findAll() {
-        LOGGER.info("Finding All Employees");
-        return employeeService.findAll();
+    public Page<Employee> findAll(Pageable pageable) {
+        LOGGER.info("Finding All Employees with page = {} and size = {}", pageable.getPageNumber(), pageable.getPageSize());
+        return employeeService.findAllByPage(pageable);
     }
 
     @Override
