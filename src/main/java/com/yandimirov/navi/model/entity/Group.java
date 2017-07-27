@@ -23,7 +23,7 @@ public class Group {
     @GeneratedValue
     @Column(name = "GROUP_ID")
     @JsonView(RequestView.Base.class)
-    private Long id;
+    private long id;
 
     @Column(name = "GROUP_NAME")
     @JsonView(RequestView.Base.class)
@@ -31,5 +31,5 @@ public class Group {
 
     @Column(name = "PERMISSION")
     @JsonView(RequestView.Group.class)
-    private Integer permission;
+    private int permission;
 }

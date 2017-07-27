@@ -36,7 +36,7 @@ public class OfficeMapperImpl implements OfficeMapper {
         }
 
         City city = office.getCity();
-        Long cityId = 0L;
+        long cityId = 0L;
         if(!ObjectUtils.isEmpty(city)){
             cityId = city.getId();
         }

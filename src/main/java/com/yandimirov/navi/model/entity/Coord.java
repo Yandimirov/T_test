@@ -21,7 +21,7 @@ public class Coord {
     @GeneratedValue
     @Column(name = "COORD_ID")
     @JsonView(RequestView.Base.class)
-    private Long id;
+    private long id;
 
     @Column(name = "COORD_ADDR")
     @JsonView(RequestView.Base.class)
@@ -39,11 +39,11 @@ public class Coord {
 
     @Column(name = "ENTITY_ID")
     @JsonIgnore
-    private Long entityId;
+    private long entityId;
 
     protected static abstract class Init<T extends  Init<T>>{
 
-        private Long id;
+        private long id;
 
         private String address;
 
@@ -51,7 +51,7 @@ public class Coord {
 
         private Floor floor;
 
-        private Long entityId;
+        private long entityId;
 
         protected abstract T self();
 

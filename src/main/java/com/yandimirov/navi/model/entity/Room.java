@@ -24,7 +24,7 @@ public class Room {
     @GeneratedValue
     @Column(name = "ROOM_ID")
     @JsonView(RequestView.Base.class)
-    private Long id;
+    private long id;
 
     @Column(name = "ROOM_NAME")
     @JsonView(RequestView.Base.class)

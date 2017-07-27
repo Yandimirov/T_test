@@ -23,7 +23,6 @@ public class LocationMapperImpl implements LocationMapper {
         }
 
         return Location.builder()
-                .id(locationDto.getId())
                 .contract(contractRepository.findOne(locationDto.getId()))
                 .name(locationDto.getName())
                 .square(locationDto.getSquare())
@@ -37,7 +36,7 @@ public class LocationMapperImpl implements LocationMapper {
         }
 
         Contract contract = location.getContract();
-        Long contractId = 0L;
+        long contractId = 0L;
         if (!ObjectUtils.isEmpty(contract)) {
             contractId = contract.getId();
         }

@@ -23,7 +23,7 @@ public class City {
     @GeneratedValue
     @Column(name = "CITY_ID")
     @JsonView(RequestView.Base.class)
-    private Long id;
+    private long id;
 
     @Column(name = "CITY_NAME")
     @JsonView(RequestView.Base.class)

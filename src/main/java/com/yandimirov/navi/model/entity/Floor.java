@@ -20,7 +20,7 @@ public class Floor {
     @GeneratedValue
     @Column(name = "FLOOR_ID")
     @JsonView(RequestView.Base.class)
-    private Long id;
+    private long id;
 
     @Column(name = "FLOOR_NAME")
     @JsonView(RequestView.Base.class)

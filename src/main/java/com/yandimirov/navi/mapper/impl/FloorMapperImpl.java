@@ -23,7 +23,6 @@ public class FloorMapperImpl implements FloorMapper{
         }
 
         return Floor.builder()
-                .id(floorDto.getId())
                 .name(floorDto.getName())
                 .office(officeRepository.findOne(floorDto.getOfficeId()))
                 .build();
@@ -36,7 +35,7 @@ public class FloorMapperImpl implements FloorMapper{
         }
 
         Office office = floor.getOffice();
-        Long officeId = 0L;
+        long officeId = 0L;
         if(!ObjectUtils.isEmpty(office)){
             officeId = office.getId();
         }

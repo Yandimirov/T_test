@@ -36,7 +36,7 @@ public class CoordMapperImpl implements CoordMapper {
         return builder
                 .address(coordDto.getAddress())
                 .entityId(coordDto.getEntityId())
-                .floor(floorRepository.findOne(coordDto.getId()))
+                .floor(floorRepository.findOne(coordDto.getFloorId()))
                 .location(locationRepository.findOne(coordDto.getLocationId()))
                 .build();
     }
@@ -48,13 +48,13 @@ public class CoordMapperImpl implements CoordMapper {
         }
 
         Floor floor = coord.getFloor();
-        Long floorId = 0L;
+        long floorId = 0L;
         if (!ObjectUtils.isEmpty(floor)) {
             floorId = floor.getId();
         }
 
         Location location = coord.getLocation();
-        Long locationId = 0L;
+        long locationId = 0L;
         if (!ObjectUtils.isEmpty(location)) {
             locationId = location.getId();
         }

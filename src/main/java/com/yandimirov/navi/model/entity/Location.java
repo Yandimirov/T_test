@@ -20,7 +20,7 @@ public class Location {
     @GeneratedValue
     @Column(name = "LOCATION_ID")
     @JsonView(RequestView.Base.class)
-    private Long id;
+    private long id;
 
     @Column(name = "LOCATION_NAME")
     @JsonView(RequestView.Base.class)
@@ -28,7 +28,7 @@ public class Location {
 
     @Column(name = "SQUARE")
     @JsonView(RequestView.Location.class)
-    private Integer square;
+    private int square;
 
     @ManyToOne
     @JoinColumn(name = "CONTRACT_ID")

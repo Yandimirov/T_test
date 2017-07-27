@@ -23,7 +23,7 @@ public class Contract {
     @GeneratedValue
     @Column(name = "CONTRACT_ID")
     @JsonView(RequestView.Base.class)
-    private Long id;
+    private long id;
 
     @Column(name = "CONTRACT_NAME")
     @JsonView(RequestView.Base.class)
@@ -31,5 +31,5 @@ public class Contract {
 
     @Column(name = "SQUARE_METER_PRICE")
     @JsonView(RequestView.Contract.class)
-    private Long squareMeterPrice;
+    private long squareMeterPrice;
 }

@@ -22,7 +22,7 @@ public class Employee {
     @GeneratedValue
     @Column(name = "EMPLOYEE_ID")
     @JsonView(RequestView.Base.class)
-    private Long id;
+    private long id;
 
     @Column(name = "EMPLOYEE_NAME")
     @JsonView(RequestView.Base.class)
@@ -33,12 +33,13 @@ public class Employee {
     private String surName;
 
     @Column(name = "BIRTH_DATE")
+    @Temporal(TemporalType.DATE)
     @JsonView(RequestView.Employee.class)
     private Date birthDate;
 
     @Column(name = "EMPLOYEE_ACTIVE")
     @JsonView(RequestView.Employee.class)
-    private Boolean active;
+    private boolean active;
 
     @Column(name = "PHONE_NUM")
     @JsonView(RequestView.Employee.class)

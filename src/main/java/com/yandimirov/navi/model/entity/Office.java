@@ -20,7 +20,7 @@ public class Office {
     @GeneratedValue
     @Column(name = "OFFICE_ID")
     @JsonView(RequestView.Base.class)
-    private Long id;
+    private long id;
 
     @Column(name = "OFFICE_NAME")
     @JsonView(RequestView.Base.class)
