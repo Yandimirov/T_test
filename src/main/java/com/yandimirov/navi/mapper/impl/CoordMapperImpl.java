@@ -75,7 +75,7 @@ public class CoordMapperImpl implements CoordMapper {
         }
 
         Long entityId = coord.getEntityId();
-        if (ObjectUtils.isEmpty(entityId) || entityId == 0) {
+        if (entityId == 0) {
             return coord;
         } else if (entityId > 0) {
             EmployeeCoord.Builder builder = new EmployeeCoord.Builder();
