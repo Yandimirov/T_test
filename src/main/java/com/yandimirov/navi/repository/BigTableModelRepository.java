@@ -10,83 +10,83 @@ import java.util.List;
 
 public interface BigTableModelRepository extends CrudRepository<BigTableModel, Long> {
 
-    @Query(value = "SELECT coord.coord_id,\n" +
-                   "       coord.coord_addr,\n" +
-                   "       floor.floor_id,\n" +
-                   "       floor.floor_name,\n" +
-                   "       office.office_id,\n" +
-                   "       office.office_name,\n" +
-                   "       city.city_id,\n" +
-                   "       city.city_name,\n" +
-                   "       location.location_id,\n" +
-                   "       location.location_name,\n" +
-                   "       entity.entity_id,\n" +
+    @Query(value = "SELECT coord.coord_id," +
+                   "       coord.coord_addr," +
+                   "       floor.floor_id," +
+                   "       floor.floor_name," +
+                   "       office.office_id," +
+                   "       office.office_name," +
+                   "       city.city_id," +
+                   "       city.city_name," +
+                   "       location.location_id," +
+                   "       location.location_name," +
+                   "       entity.entity_id," +
                    "       entity.entity_name" +
-                   "  FROM coords as coord\n" +
+                   "  FROM coords as coord" +
                    "       LEFT JOIN\n" +
-                   "            (SELECT employee.employee_id as entity_id,\n" +
-                   "                    employee.employee_name as entity_name\n" +
-                   "               FROM employees employee\n" +
-                   "\n" +
-                   "              UNION ALL\n" +
-                   "\n" +
-                   "             SELECT -room.room_id as entity_id,\n" +
-                   "                    room.room_name as entity_name\n" +
-                   "               FROM rooms room\n" +
-                   "            ) as entity\n" +
-                   "       ON coord.entity_id = entity.entity_id\n" +
-                   "\n" +
-                   "       LEFT JOIN floors as floor\n" +
-                   "       ON coord.floor_id = floor.floor_id\n" +
-                   "\n" +
-                   "       LEFT JOIN offices as office\n" +
-                   "       ON floor.office_id = office.office_id\n" +
-                   "\n" +
-                   "       LEFT JOIN cities as city\n" +
-                   "       ON office.city_id = city.city_id\n" +
-                   "\n" +
-                   "       LEFT JOIN locations as location\n" +
-                   "       ON coord.location_id =location.location_id\n", nativeQuery = true)
+                   "            (SELECT employee.employee_id as entity_id," +
+                   "                    employee.employee_name as entity_name" +
+                   "               FROM employees employee" +
+
+                   "              UNION ALL" +
+
+                   "             SELECT -room.room_id as entity_id," +
+                   "                    room.room_name as entity_name" +
+                   "               FROM rooms room" +
+                   "            ) as entity" +
+                   "       ON coord.entity_id = entity.entity_id" +
+
+                   "       LEFT JOIN floors as floor" +
+                   "       ON coord.floor_id = floor.floor_id" +
+
+                   "       LEFT JOIN offices as office" +
+                   "       ON floor.office_id = office.office_id" +
+
+                   "       LEFT JOIN cities as city" +
+                   "       ON office.city_id = city.city_id" +
+
+                   "       LEFT JOIN locations as location" +
+                   "       ON coord.location_id =location.location_id", nativeQuery = true)
     List<BigTableModel> findAllbyQuery();
 
-    @Query(value = "SELECT coord.coord_id,\n" +
-                    "       coord.coord_addr,\n" +
-                    "       floor.floor_id,\n" +
-                    "       floor.floor_name,\n" +
-                    "       office.office_id,\n" +
-                    "       office.office_name,\n" +
-                    "       city.city_id,\n" +
-                    "       city.city_name,\n" +
-                    "       location.location_id,\n" +
-                    "       location.location_name,\n" +
-                    "       entity.entity_id,\n" +
-                    "       entity.entity_name" +
-                    "  FROM coords as coord\n" +
-                    "       LEFT JOIN\n" +
-                    "            (SELECT employee.employee_id as entity_id,\n" +
-                    "                    employee.employee_name as entity_name\n" +
-                    "               FROM employees employee\n" +
-                    "\n" +
-                    "              UNION ALL\n" +
-                    "\n" +
-                    "             SELECT -room.room_id as entity_id,\n" +
-                    "                    room.room_name as entity_name\n" +
-                    "               FROM rooms room\n" +
-                    "            ) as entity\n" +
-                    "       ON coord.entity_id = entity.entity_id\n" +
-                    "\n" +
-                    "       LEFT JOIN floors as floor\n" +
-                    "       ON coord.floor_id = floor.floor_id\n" +
-                    "\n" +
-                    "       LEFT JOIN offices as office\n" +
-                    "       ON floor.office_id = office.office_id\n" +
-                    "\n" +
-                    "       LEFT JOIN cities as city\n" +
-                    "       ON office.city_id = city.city_id\n" +
-                    "\n" +
-                    "       LEFT JOIN locations as location\n" +
-                    "       ON coord.location_id =location.location_id\n" +
-                    " WHERE coord.coord_id = :id", nativeQuery = true)
+    @Query(value = "SELECT coord.coord_id," +
+                   "       coord.coord_addr," +
+                   "       floor.floor_id," +
+                   "       floor.floor_name," +
+                   "       office.office_id," +
+                   "       office.office_name," +
+                   "       city.city_id," +
+                   "       city.city_name," +
+                   "       location.location_id," +
+                   "       location.location_name," +
+                   "       entity.entity_id," +
+                   "       entity.entity_name" +
+                   "  FROM coords as coord" +
+                   "       LEFT JOIN" +
+                   "            (SELECT employee.employee_id as entity_id," +
+                   "                    employee.employee_name as entity_name" +
+                   "               FROM employees employee" +
+
+                   "              UNION ALL" +
+
+                   "             SELECT -room.room_id as entity_id," +
+                   "                    room.room_name as entity_name" +
+                   "               FROM rooms room" +
+                   "            ) as entity" +
+                   "       ON coord.entity_id = entity.entity_id" +
+
+                   "       LEFT JOIN floors as floor" +
+                   "       ON coord.floor_id = floor.floor_id" +
+
+                   "       LEFT JOIN offices as office" +
+                   "       ON floor.office_id = office.office_id" +
+
+                   "       LEFT JOIN cities as city" +
+                   "       ON office.city_id = city.city_id" +
+
+                   "       LEFT JOIN locations as location" +
+                   "       ON coord.location_id =location.location_id" +
+                   " WHERE coord.coord_id = :id", nativeQuery = true)
     BigTableModel findOneByQuery(@Param("id") Long id);
 
 }
