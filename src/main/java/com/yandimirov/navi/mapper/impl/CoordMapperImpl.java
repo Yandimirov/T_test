@@ -30,7 +30,10 @@ public class CoordMapperImpl implements CoordMapper {
         if (ObjectUtils.isEmpty(coordDto)) {
             return null;
         }
-        return Coord.builder()
+
+        Coord.Builder builder = new Coord.Builder();
+
+        return builder
                 .address(coordDto.getAddress())
                 .entityId(coordDto.getEntityId())
                 .floor(floorRepository.findOne(coordDto.getId()))
@@ -75,23 +78,25 @@ public class CoordMapperImpl implements CoordMapper {
         if (ObjectUtils.isEmpty(entityId) || entityId == 0) {
             return coord;
         } else if (entityId > 0) {
-            EmployeeCoord employeeCoord = new EmployeeCoord();
-            employeeCoord.setEmployee(employeeRepository.findOne(entityId));
-            employeeCoord.setId(coord.getId());
-            employeeCoord.setAddress(coord.getAddress());
-            employeeCoord.setEntityId(coord.getEntityId());
-            employeeCoord.setFloor(coord.getFloor());
-            employeeCoord.setLocation(coord.getLocation());
-            return employeeCoord;
+            EmployeeCoord.Builder builder = new EmployeeCoord.Builder();
+            return builder
+                    .address(coord.getAddress())
+                    .id(coord.getId())
+                    .employee(employeeRepository.findOne(entityId))
+                    .entityId(coord.getEntityId())
+                    .floor(coord.getFloor())
+                    .location(coord.getLocation())
+                    .build();
         } else {
-            RoomCoord roomCoord = new RoomCoord();
-            roomCoord.setRoom(roomRepository.findOne(-entityId));
-            roomCoord.setAddress(coord.getAddress());
-            roomCoord.setEntityId(coord.getEntityId());
-            roomCoord.setFloor(coord.getFloor());
-            roomCoord.setLocation(coord.getLocation());
-            roomCoord.setId(coord.getId());
-            return roomCoord;
+            RoomCoord.Builder builder = new RoomCoord.Builder();
+            return builder
+                    .address(coord.getAddress())
+                    .entityId(coord.getEntityId())
+                    .floor(coord.getFloor())
+                    .location(coord.getLocation())
+                    .room(roomRepository.findOne(-entityId))
+                    .id(coord.getId())
+                    .build();
         }
     }
 }

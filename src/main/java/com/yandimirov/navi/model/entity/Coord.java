@@ -12,7 +12,6 @@ import javax.persistence.*;
 
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "COORDS")
@@ -41,4 +40,64 @@ public class Coord {
     @Column(name = "ENTITY_ID")
     @JsonIgnore
     private Long entityId;
+
+    protected static abstract class Init<T extends  Init<T>>{
+
+        private Long id;
+
+        private String address;
+
+        private Location location;
+
+        private Floor floor;
+
+        private Long entityId;
+
+        protected abstract T self();
+
+        public T id(Long id){
+            this.id = id;
+            return self();
+        }
+
+        public T address(String address){
+            this.address = address;
+            return self();
+        }
+
+        public T location(Location location){
+            this.location = location;
+            return self();
+        }
+
+        public T floor(Floor floor){
+            this.floor = floor;
+            return self();
+        }
+
+        public T entityId(Long entityId){
+            this.entityId = entityId;
+            return self();
+        }
+
+        public Coord build(){
+            return new Coord(this);
+        }
+    }
+
+    public static class Builder extends Init<Builder> {
+
+        @Override
+        protected Builder self(){
+            return this;
+        }
+    }
+
+    protected Coord(Init<?> init){
+        this.address = init.address;
+        this.id = init.id;
+        this.entityId = init.entityId;
+        this.floor = init.floor;
+        this.location = init.location;
+    }
 }

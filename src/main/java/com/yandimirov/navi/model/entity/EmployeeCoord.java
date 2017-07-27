@@ -13,4 +13,31 @@ public class EmployeeCoord extends Coord {
 
     @JsonView(RequestView.Coord.class)
     private Employee employee;
+
+    protected static abstract class Init<T extends Init<T>> extends Coord.Init<T>{
+
+        private Employee employee;
+
+        public T employee(Employee employee){
+            this.employee = employee;
+            return self();
+        }
+
+        public EmployeeCoord build(){
+            return new EmployeeCoord(this);
+        }
+    }
+
+    public static class Builder extends Init<Builder>{
+
+        @Override
+        protected Builder self(){
+            return this;
+        }
+    }
+
+    protected EmployeeCoord(Init<?> init){
+        super(init);
+        this.employee = init.employee;
+    }
 }
