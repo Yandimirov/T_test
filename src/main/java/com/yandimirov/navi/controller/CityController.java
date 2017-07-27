@@ -51,6 +51,7 @@ public class CityController extends AbstractController<City, City> {
     @JsonView(RequestView.City.class)
     public City update(@PathVariable("id") Long id, @RequestBody City city) {
         LOGGER.info("Update City With ID = {}, {}", id, city);
+        city.setId(id);
         return cityService.save(city);
     }
 

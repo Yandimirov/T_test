@@ -27,6 +27,7 @@ public class EmployeeMapperImpl implements EmployeeMapper {
             return null;
         }
         return Employee.builder()
+                .id(employeeDto.getId())
                 .active(employeeDto.isActive())
                 .birthDate(employeeDto.getBirthDate())
                 .city(cityRepository.findOne(employeeDto.getCityId()))

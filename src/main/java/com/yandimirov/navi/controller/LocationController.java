@@ -50,6 +50,7 @@ public class LocationController extends AbstractController<Location, LocationDto
     @JsonView(RequestView.Location.class)
     public Location update(@PathVariable("id") Long id, @RequestBody LocationDto locationDto) {
         LOGGER.info("Updating Location With ID = {}, {}", id, locationDto);
+        locationDto.setId(id);
         return locationService.save(locationDto);
     }
 

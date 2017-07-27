@@ -23,6 +23,7 @@ public class OfficeMapperImpl implements OfficeMapper {
         }
 
         return Office.builder()
+                .id(officeDto.getId())
                 .name(officeDto.getName())
                 .address(officeDto.getAddress())
                 .city(cityRepository.findOne(officeDto.getCityId()))

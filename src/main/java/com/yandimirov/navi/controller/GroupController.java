@@ -52,6 +52,7 @@ public class GroupController extends AbstractController<Group, Group> {
     @JsonView(RequestView.Group.class)
     public Group update(@PathVariable("id") Long id, @RequestBody Group group) {
         LOGGER.info("Updating Group With ID = {}, {}", id, group);
+        group.setId(id);
         return groupService.save(group);
     }
 

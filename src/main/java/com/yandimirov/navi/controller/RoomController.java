@@ -47,6 +47,7 @@ public class RoomController extends AbstractController<Room, Room> {
     @ResponseStatus(HttpStatus.OK)
     public Room update(@PathVariable("id") Long id, @RequestBody Room room) {
         LOGGER.info("Update Room With ID = {}, {}", id, room);
+        room.setId(id);
         return roomService.save(room);
     }
 

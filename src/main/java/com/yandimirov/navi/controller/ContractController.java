@@ -51,6 +51,7 @@ public class ContractController extends AbstractController<Contract, Contract>{
     @JsonView(RequestView.Contract.class)
     public Contract update(@PathVariable("id") Long id, @RequestBody Contract contract) {
         LOGGER.info("Update Contract With ID = {}, {}", id, contract);
+        contract.setId(id);
         return contractService.save(contract);
     }
 

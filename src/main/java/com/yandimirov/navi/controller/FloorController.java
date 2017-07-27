@@ -52,6 +52,7 @@ public class FloorController extends AbstractController<Floor, FloorDto>{
     @JsonView(RequestView.Floor.class)
     public Floor update(@PathVariable("id") Long id, @RequestBody FloorDto floorDto) {
         LOGGER.info("Updating Floor With ID = {}, {}", id, floorDto);
+        floorDto.setId(id);
         return floorService.save(floorDto);
     }
 

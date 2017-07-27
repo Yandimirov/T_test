@@ -23,6 +23,7 @@ public class LocationMapperImpl implements LocationMapper {
         }
 
         return Location.builder()
+                .id(locationDto.getId())
                 .contract(contractRepository.findOne(locationDto.getId()))
                 .name(locationDto.getName())
                 .square(locationDto.getSquare())

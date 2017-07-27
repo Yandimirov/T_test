@@ -51,6 +51,7 @@ public class OfficeController extends AbstractController<Office, OfficeDto>{
     @JsonView(RequestView.Office.class)
     public Office update(@PathVariable Long id, @RequestBody OfficeDto officeDto) {
         LOGGER.info("Updating Office With ID = {}, {}", id, officeDto);
+        officeDto.setId(id);
         return officeService.save(officeDto);
     }
 

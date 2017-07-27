@@ -23,6 +23,7 @@ public class FloorMapperImpl implements FloorMapper{
         }
 
         return Floor.builder()
+                .id(floorDto.getId())
                 .name(floorDto.getName())
                 .office(officeRepository.findOne(floorDto.getOfficeId()))
                 .build();

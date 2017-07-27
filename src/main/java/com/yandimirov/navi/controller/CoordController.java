@@ -51,6 +51,7 @@ public class CoordController extends AbstractController<Coord, CoordDto> {
     @JsonView(RequestView.Coord.class)
     public Coord update(@PathVariable("id") Long id, @RequestBody CoordDto coordDto) {
         LOGGER.info("Updating Coord With ID = {}, {}", id, coordDto);
+        coordDto.setId(id);
         return coordService.save(coordDto);
     }
 

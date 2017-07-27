@@ -53,6 +53,7 @@ public class EmployeeController extends AbstractController<Employee, EmployeeDto
     @JsonView(RequestView.Employee.class)
     public Employee update(@PathVariable("id") Long id, @RequestBody EmployeeDto employeeDto) {
         LOGGER.info("Updating Employee With ID = {}, {}", id, employeeDto);
+        employeeDto.setId(id);
         return employeeService.save(employeeDto);
     }
 
