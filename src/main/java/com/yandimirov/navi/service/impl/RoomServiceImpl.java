@@ -6,35 +6,32 @@ import com.yandimirov.navi.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class RoomServiceImpl implements RoomService {
 
-    @Autowired
-    private RoomRepository roomRepository;
+  @Autowired
+  private RoomRepository roomRepository;
 
-    @Override
-    public List<Room> findAll() {
-        return roomRepository.findAll();
-    }
+  @Override
+  public List<Room> findAll() {
+    return roomRepository.findAll();
+  }
 
-    @Override
-    public Room findOne(Long id) {
-        return roomRepository.findOne(id);
-    }
+  @Override
+  public Room findOne(final Long id) {
+    return roomRepository.findOne(id);
+  }
 
-    @Override
-    public Room save(Room room) {
-        return roomRepository.save(room);
-    }
+  @Override
+  public Room save(final Room room) {
+    return roomRepository.save(room);
+  }
 
-    @Override
-    public void delete(Long id) {
-        roomRepository.delete(id);
-    }
+  @Override
+  public void delete(final Long id) {
+    roomRepository.delete(id);
+  }
 }

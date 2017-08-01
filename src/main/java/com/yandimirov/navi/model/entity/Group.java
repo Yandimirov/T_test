@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,17 +18,17 @@ import javax.persistence.Id;
 @Entity(name = "GROUPS")
 public class Group {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "GROUP_ID")
-    @JsonView(RequestView.Base.class)
-    private long id;
+  @Id
+  @GeneratedValue
+  @Column(name = "GROUP_ID")
+  @JsonView(RequestView.Base.class)
+  private long id;
 
-    @Column(name = "GROUP_NAME")
-    @JsonView(RequestView.Base.class)
-    private String name;
+  @Column(name = "GROUP_NAME")
+  @JsonView(RequestView.Base.class)
+  private String name;
 
-    @Column(name = "PERMISSION")
-    @JsonView(RequestView.Group.class)
-    private int permission;
+  @Column(name = "PERMISSION")
+  @JsonView(RequestView.Group.class)
+  private int permission;
 }

@@ -11,33 +11,34 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EmployeeCoord extends Coord {
 
-    @JsonView(RequestView.Coord.class)
+  @JsonView(RequestView.Coord.class)
+  private Employee employee;
+
+  protected abstract static class Init<T extends Init<T>> extends
+      Coord.Init<T> {
+
     private Employee employee;
 
-    protected static abstract class Init<T extends Init<T>> extends Coord.Init<T>{
-
-        private Employee employee;
-
-        public T employee(Employee employee){
-            this.employee = employee;
-            return self();
-        }
-
-        public EmployeeCoord build(){
-            return new EmployeeCoord(this);
-        }
+    public T employee(final Employee employee) {
+      this.employee = employee;
+      return self();
     }
 
-    public static class Builder extends Init<Builder>{
-
-        @Override
-        protected Builder self(){
-            return this;
-        }
+    public EmployeeCoord build() {
+      return new EmployeeCoord(this);
     }
+  }
 
-    protected EmployeeCoord(Init<?> init){
-        super(init);
-        this.employee = init.employee;
+  public static class Builder extends Init<Builder> {
+
+    @Override
+    protected Builder self() {
+      return this;
     }
+  }
+
+  protected EmployeeCoord(final Init<?> init) {
+    super(init);
+    this.employee = init.employee;
+  }
 }

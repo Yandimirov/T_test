@@ -11,32 +11,34 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RoomCoord extends Coord {
 
-    @JsonView(RequestView.Coord.class)
+  @JsonView(RequestView.Coord.class)
+  private Room room;
+
+  protected abstract static class Init<T extends Init<T>> extends
+      Coord.Init<T> {
+
     private Room room;
 
-    protected static abstract class Init<T extends Init<T>> extends Coord.Init<T>{
-
-        private Room room;
-
-        public T room(Room room){
-            this.room = room;
-            return self();
-        }
-
-        public RoomCoord build(){
-            return new RoomCoord(this);
-        }
+    public T room(final Room room) {
+      this.room = room;
+      return self();
     }
 
-    public static class Builder extends Init<Builder> {
-        @Override
-        protected Builder self(){
-            return this;
-        }
+    public RoomCoord build() {
+      return new RoomCoord(this);
     }
+  }
 
-    private RoomCoord(Init<?> init){
-        super(init);
-        this.room = init.room;
+  public static class Builder extends Init<Builder> {
+
+    @Override
+    protected Builder self() {
+      return this;
     }
+  }
+
+  private RoomCoord(final Init<?> init) {
+    super(init);
+    this.room = init.room;
+  }
 }

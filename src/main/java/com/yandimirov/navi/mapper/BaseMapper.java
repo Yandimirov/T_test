@@ -2,7 +2,7 @@ package com.yandimirov.navi.mapper;
 
 public interface BaseMapper<E, DTO> {
 
-    E mapDtoToEntity(DTO dto);
+  E mapDtoToEntity(DTO dto);
 
-    DTO mapEntityToDto(E e);
+  DTO mapEntityToDto(E e);
 }

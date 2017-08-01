@@ -5,5 +5,5 @@ import com.yandimirov.navi.model.entity.Coord;
 
 public interface CoordMapper extends BaseMapper<Coord, CoordDto> {
 
-    Coord mapCoordToExtendedCoord(Coord coord);
+  Coord mapCoordToExtendedCoord(Coord coord);
 }

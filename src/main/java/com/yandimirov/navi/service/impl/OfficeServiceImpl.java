@@ -8,39 +8,36 @@ import com.yandimirov.navi.service.OfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class OfficeServiceImpl implements OfficeService{
+public class OfficeServiceImpl implements OfficeService {
 
-    @Autowired
-    private OfficeMapper officeMapper;
+  @Autowired
+  private OfficeMapper officeMapper;
 
-    @Autowired
-    private OfficeRepository officeRepository;
+  @Autowired
+  private OfficeRepository officeRepository;
 
-    @Override
-    public List<Office> findAll() {
-        return officeRepository.findAll();
-    }
+  @Override
+  public List<Office> findAll() {
+    return officeRepository.findAll();
+  }
 
-    @Override
-    public Office findOne(Long id) {
-        return officeRepository.findOne(id);
-    }
+  @Override
+  public Office findOne(final Long id) {
+    return officeRepository.findOne(id);
+  }
 
-    @Override
-    public Office save(OfficeDto officeDto) {
-        Office office = officeMapper.mapDtoToEntity(officeDto);
-        return officeRepository.save(office);
-    }
+  @Override
+  public Office save(final OfficeDto officeDto) {
+    Office office = officeMapper.mapDtoToEntity(officeDto);
+    return officeRepository.save(office);
+  }
 
-    @Override
-    public void delete(Long id) {
-        officeRepository.delete(id);
-    }
+  @Override
+  public void delete(final Long id) {
+    officeRepository.delete(id);
+  }
 }

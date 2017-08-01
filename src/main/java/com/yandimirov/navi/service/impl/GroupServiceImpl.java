@@ -6,35 +6,32 @@ import com.yandimirov.navi.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class GroupServiceImpl implements GroupService {
 
-    @Autowired
-    private GroupRepository groupRepository;
+  @Autowired
+  private GroupRepository groupRepository;
 
-    @Override
-    public List<Group> findAll() {
-        return groupRepository.findAll();
-    }
+  @Override
+  public List<Group> findAll() {
+    return groupRepository.findAll();
+  }
 
-    @Override
-    public Group findOne(Long id) {
-        return groupRepository.findOne(id);
-    }
+  @Override
+  public Group findOne(final Long id) {
+    return groupRepository.findOne(id);
+  }
 
-    @Override
-    public Group save(Group group) {
-        return groupRepository.save(group);
-    }
+  @Override
+  public Group save(final Group group) {
+    return groupRepository.save(group);
+  }
 
-    @Override
-    public void delete(Long id) {
-        groupRepository.delete(id);
-    }
+  @Override
+  public void delete(final Long id) {
+    groupRepository.delete(id);
+  }
 }

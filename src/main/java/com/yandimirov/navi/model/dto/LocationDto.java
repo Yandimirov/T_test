@@ -7,11 +7,11 @@ import lombok.Data;
 @Builder
 public class LocationDto {
 
-    private long id;
+  private long id;
 
-    private String name;
+  private String name;
 
-    private int square;
+  private int square;
 
-    private long contractId;
+  private long contractId;
 }

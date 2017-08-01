@@ -6,32 +6,32 @@ import com.yandimirov.navi.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
+
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class CityServiceImpl implements CityService {
 
-    @Autowired
-    private CityRepository cityRepository;
+  @Autowired
+  private CityRepository cityRepository;
 
-    @Override
-    public List<City> findAll() {
-        return cityRepository.findAll();
-    }
+  @Override
+  public List<City> findAll() {
+    return cityRepository.findAll();
+  }
 
-    @Override
-    public City findOne(Long id) {
-        return cityRepository.findOne(id);
-    }
+  @Override
+  public City findOne(final Long id) {
+    return cityRepository.findOne(id);
+  }
 
-    @Override
-    public City save(City city) {
-        return cityRepository.save(city);
-    }
+  @Override
+  public City save(final City city) {
+    return cityRepository.save(city);
+  }
 
-    @Override
-    public void delete(Long id) {
-        cityRepository.delete(id);
-    }
+  @Override
+  public void delete(final Long id) {
+    cityRepository.delete(id);
+  }
 }

@@ -10,44 +10,40 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+  @Autowired
+  private EmployeeRepository employeeRepository;
 
-    @Autowired
-    private EmployeeMapper employeeMapper;
+  @Autowired
+  private EmployeeMapper employeeMapper;
 
-    @Override
-    public List<Employee> findAll() {
-        return employeeRepository.findAll();
-    }
+  @Override
+  public List<Employee> findAll() {
+    return employeeRepository.findAll();
+  }
 
-    @Override
-    public Employee findOne(Long id) {
-        return employeeRepository.findOne(id);
-    }
+  @Override
+  public Employee findOne(final Long id) {
+    return employeeRepository.findOne(id);
+  }
 
-    @Override
-    public Employee save(EmployeeDto employeeDto) {
-        return employeeRepository.save(employeeMapper.mapDtoToEntity(employeeDto));
-    }
+  @Override
+  public Employee save(final EmployeeDto employeeDto) {
+    return employeeRepository.save(employeeMapper.mapDtoToEntity(employeeDto));
+  }
 
-    @Override
-    public void delete(Long id) {
-        employeeRepository.delete(id);
-    }
+  @Override
+  public void delete(final Long id) {
+    employeeRepository.delete(id);
+  }
 
-    @Override
-    public Page<Employee> findAllByPage(Pageable pageable) {
-        Page<Employee> page = employeeRepository.findAll(pageable);
-        return page;
-    }
+  @Override
+  public Page<Employee> findAllByPage(final Pageable pageable) {
+    return employeeRepository.findAll(pageable);
+  }
 }

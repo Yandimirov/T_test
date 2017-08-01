@@ -7,11 +7,11 @@ import lombok.Data;
 @Builder
 public class OfficeDto {
 
-    private long id;
+  private long id;
 
-    private String name;
+  private String name;
 
-    private String address;
+  private String address;
 
-    private long cityId;
+  private long cityId;
 }
