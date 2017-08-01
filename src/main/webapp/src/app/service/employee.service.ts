@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-import {Headers, Http} from '@angular/http';
+import {Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Employee} from '../model/employee';
 import {EMPLOYEE_URL} from '../utils/urls';
@@ -10,8 +10,6 @@ export class EmployeeService {
 
   private employeesUrl = EMPLOYEE_URL;
 
-  private headers = new Headers({'Content-Type': 'application/json'});
-
   constructor(private http: Http) {
   }
 
@@ -19,7 +17,7 @@ export class EmployeeService {
     return this.http.get(this.employeesUrl)
     .toPromise()
     .then(response => {
-      return response.json().content as Employee[]
+      return response.json().content as Employee[];
     })
     .catch(this.handleError);
   }
@@ -29,7 +27,7 @@ export class EmployeeService {
     return this.http.get(url)
     .toPromise()
     .then(response => {
-      return response.json().data as Employee
+      return response.json().data as Employee;
     })
     .catch(this.handleError);
   }

@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DataSource} from '@angular/cdk';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
@@ -43,7 +43,7 @@ export class EmployeeDataSource extends DataSource<Employee> {
     super();
     this.employeeService.getEmployees().then(response => {
       this.employees.next(response);
-    })
+    });
   }
 
   connect(): Observable<Employee[]> {
