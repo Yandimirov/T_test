@@ -26,3 +26,5 @@ nbdist/
 
 *.db
 /out/
+src/main/webapp/node_modules/
+src/main/webapp/.editorconfig
