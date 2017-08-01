@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/table")
+@RequestMapping("api/table")
 public final class BigTableModelController {
 
   @Autowired

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/cities")
+@RequestMapping("api/cities")
 public final class CityController extends AbstractController<City, City> {
 
   @Autowired

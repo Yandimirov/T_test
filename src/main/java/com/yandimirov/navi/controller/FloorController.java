@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/floors")
+@RequestMapping("api/floors")
 public final class FloorController extends AbstractController<Floor, FloorDto> {
 
   @Autowired

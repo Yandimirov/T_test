@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/coords")
+@RequestMapping("api/coords")
 public final class CoordController extends AbstractController<Coord, CoordDto> {
 
   @Autowired

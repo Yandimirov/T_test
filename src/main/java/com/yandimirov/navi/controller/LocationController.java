@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/locations")
+@RequestMapping("api/locations")
 public final class LocationController extends
     AbstractController<Location, LocationDto> {
 

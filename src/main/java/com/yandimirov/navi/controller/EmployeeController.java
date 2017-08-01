@@ -23,7 +23,7 @@ import java.util.List;
 
 @Log
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("api/employees")
 public final class EmployeeController extends
     AbstractController<Employee, EmployeeDto> {
 

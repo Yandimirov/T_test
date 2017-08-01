@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Log
 @RestController
-@RequestMapping("/rooms")
+@RequestMapping("api/rooms")
 public final class RoomController extends AbstractController<Room, Room> {
 
   @Autowired

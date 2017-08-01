@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/contracts")
+@RequestMapping("api/contracts")
 public final class ContractController extends
     AbstractController<Contract, Contract> {
 

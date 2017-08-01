@@ -1,0 +1,41 @@
+<div class="employee-container mat-elevation-z8">
+
+  <md-table #table [dataSource]="employeeDataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container cdkColumnDef="employeeId">
+      <md-header-cell *cdkHeaderCellDef> ID </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.id}} </md-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="employeeName">
+      <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="employeeSurName">
+      <md-header-cell *cdkHeaderCellDef> Surname </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.surName}} </md-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="employeePhone">
+      <md-header-cell *cdkHeaderCellDef> Phone </md-header-cell>
+      <md-cell *cdkCellDef="let row" > {{row.phoneNum}} </md-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="employeeBithDate">
+      <md-header-cell *cdkHeaderCellDef> Birth Date </md-header-cell>
+      <md-cell *cdkCellDef="let row" > {{row.birthDate}} </md-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="employeeActive">
+      <md-header-cell *cdkHeaderCellDef> Active </md-header-cell>
+      <md-cell *cdkCellDef="let row" > {{row.active}} </md-cell>
+    </ng-container>
+
+    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+  </md-table>
+</div>

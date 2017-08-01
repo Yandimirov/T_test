@@ -20,7 +20,7 @@ import java.util.List;
 
 @Log
 @RestController
-@RequestMapping("/groups")
+@RequestMapping("api/groups")
 public final class GroupController extends AbstractController<Group, Group> {
 
   @Autowired
