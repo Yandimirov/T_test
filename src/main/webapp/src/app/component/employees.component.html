@@ -1,41 +1,84 @@
-<div class="employee-container mat-elevation-z8">
+<div class="employee-container">
+  <p-dataTable [value]="employees"
+               [responsive]="true"
+               selectionMode="single"
+               [(selection)]="selectedEmployee"
+               (onRowSelect)="onSelectEmployee($event)" >
+    <p-header>Employees</p-header>
+    <p-column *ngFor="let col of columns"
+              [field]="col.field"
+              [header]="col.header">
 
-  <md-table #table [dataSource]="employeeDataSource">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <ng-container cdkColumnDef="employeeId">
-      <md-header-cell *cdkHeaderCellDef> ID </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.id}} </md-cell>
-    </ng-container>
-
-    <ng-container cdkColumnDef="employeeName">
-      <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
-    </ng-container>
-
-    <ng-container cdkColumnDef="employeeSurName">
-      <md-header-cell *cdkHeaderCellDef> Surname </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.surName}} </md-cell>
-    </ng-container>
-
-    <ng-container cdkColumnDef="employeePhone">
-      <md-header-cell *cdkHeaderCellDef> Phone </md-header-cell>
-      <md-cell *cdkCellDef="let row" > {{row.phoneNum}} </md-cell>
-    </ng-container>
-
-    <ng-container cdkColumnDef="employeeBithDate">
-      <md-header-cell *cdkHeaderCellDef> Birth Date </md-header-cell>
-      <md-cell *cdkCellDef="let row" > {{row.birthDate}} </md-cell>
-    </ng-container>
-
-    <ng-container cdkColumnDef="employeeActive">
-      <md-header-cell *cdkHeaderCellDef> Active </md-header-cell>
-      <md-cell *cdkCellDef="let row" > {{row.active}} </md-cell>
-    </ng-container>
-
-    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
-  </md-table>
+    </p-column>
+    <p-footer>
+      <div class="ui-helper-clearfix" style="width:100%">
+        <button type="button"
+                pButton
+                icon="fa-plus"
+                style="float:left"
+                (click)="showCreateDialog()"
+                label="Add">
+        </button>
+      </div>
+    </p-footer>
+  </p-dataTable>
+  <p-paginator [rows]="pageSize"
+               [totalRecords]="length"
+               [rowsPerPageOptions]="[10,20,30]"
+               (onPageChange)="onPageChange($event)">
+  </p-paginator>
+  <p-dialog header="Employee Details"
+            [(visible)]="displayDialog"
+            [responsive]="true"
+            showEffect="fade"
+            [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="employee">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="name">Name</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input pInputText id="name" [(ngModel)]="employee.name" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="surName">Surname</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input pInputText id="surName" [(ngModel)]="employee.surName" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="birthDate">Birth date</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input pInputText id="birthDate" [(ngModel)]="employee.birthDate" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="phone">Phone</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input pInputText id="phone" [(ngModel)]="employee.phoneNum" />
+        </div>
+      </div>
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+        <button type="button"
+                pButton icon="fa-close"
+                (click)="delete()"
+                label="Delete">
+        </button>
+        <button type="button"
+                pButton icon="fa-check"
+                (click)="save()"
+                label="Save">
+        </button>
+      </div>
+    </p-footer>
+  </p-dialog>
 </div>
