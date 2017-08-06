@@ -8,10 +8,12 @@ import {HttpModule} from '@angular/http';
 import {CommonModule} from '@angular/common';
 import {
   DataTableModule, SharedModule, PaginatorModule,
-  ButtonModule, DialogModule, InputTextModule
+  ButtonModule, DialogModule, InputTextModule,
+  DropdownModule
 } from 'primeng/primeng';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CityService} from './service/city.service';
 
 @NgModule({
   imports: [
@@ -25,7 +27,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     DialogModule,
     FormsModule,
     BrowserAnimationsModule,
-    InputTextModule
+    InputTextModule,
+    DropdownModule
   ],
   declarations: [
     AppComponent,
@@ -34,6 +37,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   bootstrap: [AppComponent],
   providers: [
     EmployeeService,
+    CityService
   ]
 })
 export class AppModule {

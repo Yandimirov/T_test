@@ -7,15 +7,18 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
 import {EmployeeService} from '../service/employee.service';
 import {Employee} from '../model/employee';
+import {CityService} from '../service/city.service';
+import {SelectItem} from 'primeng/primeng';
 
 
 @Component({
   selector: 'employees-table',
   styleUrls: ['./employees.component.css'],
-  templateUrl: './employees.component.html'
+  templateUrl: './employees.component.html',
 })
 export class EmployeesComponent implements OnInit {
   employees: Employee[];
+  cities: SelectItem[];
   selectedEmployee: Employee;
   columns: any[];
   displayDialog: boolean = false;
@@ -24,20 +27,24 @@ export class EmployeesComponent implements OnInit {
   pageSize = 10;
   pageIndex = 0;
   length = 0;
+  cityName = '';
 
-  constructor(private employeeService: EmployeeService) {
-
+  constructor(private employeeService: EmployeeService,
+              private cityService: CityService) {
   }
 
   ngOnInit(): void {
     this.loadEmployees();
+    this.loadCities();
     this.columns = [
       {field: 'id', header: 'ID'},
       {field: 'name', header: 'Name'},
       {field: 'surName', header: 'Surname'},
       {field: 'birthDate', header: 'Birth date'},
       {field: 'active', header: 'Active'},
-      {field: 'phoneNum', header: 'Phone Number'}
+      {field: 'phoneNum', header: 'Phone Number'},
+      {field: 'city.name', header: 'City'},
+      {field: 'group.name', header: 'Group'}
     ];
   }
 
@@ -47,6 +54,21 @@ export class EmployeesComponent implements OnInit {
       console.log(response);
       this.employees = response.json().content;
       this.length = response.json().totalElements;
+    });
+  }
+
+  loadCities(): void {
+    this.cityService.getCities()
+    .then(response => {
+      this.cities = response.map(city => {
+        return {
+          label: city.name,
+          value: {
+            id: city.id,
+            name: city.name
+          }
+        };
+      });
     });
   }
 
@@ -63,7 +85,6 @@ export class EmployeesComponent implements OnInit {
   }
 
   onSelectEmployee(event: any): void {
-    console.log(this.selectedEmployee);
     this.isNewEmployee = false;
     this.employee = new Employee();
     for (const field in this.selectedEmployee) {
@@ -71,6 +92,8 @@ export class EmployeesComponent implements OnInit {
         this.employee[field] = this.selectedEmployee[field];
       }
     }
+    this.cityName = this.employee.city.name;
+    // console.log(this.employee);
     this.displayDialog = true;
   }
 
@@ -82,18 +105,37 @@ export class EmployeesComponent implements OnInit {
       .then(response => {
         let newEmployee = response.json();
         let employees = [...this.employees];
-        let index = employees.findIndex(emp => emp.id === newEmployee.id);
-        employees[index] = newEmployee;
-        console.log(newEmployee);
-        console.log(this.employee);
-        this.employee = null;
-        this.employees = employees;
+        let index = this.findIndexOfEmployee(newEmployee);
+        if (index !== -1) {
+          employees[index] = newEmployee;
+          console.log(newEmployee);
+          console.log(this.employee);
+          this.employee = null;
+          this.employees = employees;
+        }
       });
     }
     this.displayDialog = false;
   }
 
   delete(): void {
+    if (this.selectedEmployee) {
+      this.employeeService.deleteEmployee(this.selectedEmployee)
+      .then(response => {
+        if (response.ok) {
+          let copiedEmployees = [...this.employees];
+          let index = this.findIndexOfEmployee(this.selectedEmployee);
+          if (index !== -1) {
+            copiedEmployees.splice(index, 1);
+            this.employees = copiedEmployees;
+          }
+        }
+      });
+    }
+    this.displayDialog = false;
+  }
 
+  private findIndexOfEmployee(employee: Employee) {
+    return this.employees.findIndex(emp => emp.id === employee.id);
   }
 }

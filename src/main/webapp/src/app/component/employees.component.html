@@ -59,10 +59,26 @@
       </div>
       <div class="ui-grid-row">
         <div class="ui-grid-col-4">
+          <label for="city">City</label>
+        </div>
+        <div class="ui-grid-col-8" >
+          <p-dropdown id="city" [options]="cities" [(ngModel)]="cityName" placeholder="Select a City"></p-dropdown>
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
           <label for="phone">Phone</label>
         </div>
         <div class="ui-grid-col-8">
           <input pInputText id="phone" [(ngModel)]="employee.phoneNum" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="group">Group</label>
+        </div>
+        <div class="ui-grid-col-8" *ngIf="employee.group">
+          <input pInputText id="group" [(ngModel)]="employee.group.name" />
         </div>
       </div>
     </div>
