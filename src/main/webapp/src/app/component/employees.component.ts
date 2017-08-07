@@ -9,6 +9,7 @@ import {EmployeeService} from '../service/employee.service';
 import {Employee} from '../model/employee';
 import {CityService} from '../service/city.service';
 import {SelectItem} from 'primeng/primeng';
+import {GroupService} from '../service/group.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ import {SelectItem} from 'primeng/primeng';
 export class EmployeesComponent implements OnInit {
   employees: Employee[];
   cities: SelectItem[];
+  groups: SelectItem[];
   selectedEmployee: Employee;
   columns: any[];
   displayDialog: boolean = false;
@@ -27,10 +29,12 @@ export class EmployeesComponent implements OnInit {
   pageSize = 10;
   pageIndex = 0;
   length = 0;
-  cityName = '';
+  cityId: number = null;
+  groupId: number = null;
 
   constructor(private employeeService: EmployeeService,
-              private cityService: CityService) {
+              private cityService: CityService,
+              private groupService: GroupService) {
   }
 
   ngOnInit(): void {
@@ -63,10 +67,7 @@ export class EmployeesComponent implements OnInit {
       this.cities = response.map(city => {
         return {
           label: city.name,
-          value: {
-            id: city.id,
-            name: city.name
-          }
+          value: city.id
         };
       });
     });
@@ -81,6 +82,7 @@ export class EmployeesComponent implements OnInit {
   showCreateDialog(): void {
     this.isNewEmployee = true;
     this.employee = new Employee();
+    this.cityId = null;
     this.displayDialog = true;
   }
 
@@ -92,8 +94,8 @@ export class EmployeesComponent implements OnInit {
         this.employee[field] = this.selectedEmployee[field];
       }
     }
-    this.cityName = this.employee.city.name;
-    // console.log(this.employee);
+    this.cityId = this.employee.city.id;
+    console.log(this.cityId);
     this.displayDialog = true;
   }
 

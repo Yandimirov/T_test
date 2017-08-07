@@ -1,6 +1,5 @@
 <div class="employee-container">
   <p-dataTable [value]="employees"
-               [responsive]="true"
                selectionMode="single"
                [(selection)]="selectedEmployee"
                (onRowSelect)="onSelectEmployee($event)" >
@@ -32,7 +31,7 @@
             [responsive]="true"
             showEffect="fade"
             [modal]="true">
-    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="employee">
+    <div class="ui-grid" *ngIf="employee">
       <div class="ui-grid-row">
         <div class="ui-grid-col-4">
           <label for="name">Name</label>
@@ -62,7 +61,15 @@
           <label for="city">City</label>
         </div>
         <div class="ui-grid-col-8" >
-          <p-dropdown id="city" [options]="cities" [(ngModel)]="cityName" placeholder="Select a City"></p-dropdown>
+          <p-dropdown id="city" [options]="cities" [(ngModel)]="cityId" autoWidth="false" [style]="{'width':'100%'}" placeholder="Select a City"></p-dropdown>
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="group">Group</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <p-dropdown id="group" [options]="groups" [(ngModel)]="groupId" autoWidth="false" [style]="{'width':'100%'}" placeholder="Select a Group"></p-dropdown>
         </div>
       </div>
       <div class="ui-grid-row">
@@ -71,14 +78,6 @@
         </div>
         <div class="ui-grid-col-8">
           <input pInputText id="phone" [(ngModel)]="employee.phoneNum" />
-        </div>
-      </div>
-      <div class="ui-grid-row">
-        <div class="ui-grid-col-4">
-          <label for="group">Group</label>
-        </div>
-        <div class="ui-grid-col-8" *ngIf="employee.group">
-          <input pInputText id="group" [(ngModel)]="employee.group.name" />
         </div>
       </div>
     </div>

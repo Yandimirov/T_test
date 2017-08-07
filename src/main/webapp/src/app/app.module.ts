@@ -14,6 +14,7 @@ import {
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CityService} from './service/city.service';
+import {GroupService} from './service/group.service';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import {CityService} from './service/city.service';
   bootstrap: [AppComponent],
   providers: [
     EmployeeService,
-    CityService
+    CityService,
+    GroupService
   ]
 })
 export class AppModule {
