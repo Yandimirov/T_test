@@ -34,7 +34,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
   @Override
   public Employee save(final EmployeeDto employeeDto) {
-    return employeeRepository.save(employeeMapper.mapDtoToEntity(employeeDto));
+    Employee employee = employeeMapper.mapDtoToEntity(employeeDto);
+    if(employee.getId() == 0){
+      employee.setId(employeeRepository.findMaxId());
+    }
+    return employeeRepository.save(employee);
   }
 
   @Override

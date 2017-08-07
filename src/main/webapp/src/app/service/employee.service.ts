@@ -41,7 +41,7 @@ export class EmployeeService {
       const url = `${this.employeesUrl}/${employee.id}`;
       return this.http.delete(url)
       .toPromise()
-      .then( response => response)
+      .then(response => response)
       .catch(this.handleError);
     }
   }
@@ -53,6 +53,16 @@ export class EmployeeService {
     .then(response => {
       return response.json().data as Employee;
     })
+    .catch(this.handleError);
+  }
+
+  createEmployee(employee: Employee): Promise<any> {
+    let employeeDto = new EmployeeDto(employee);
+    return this.http.post(this.employeesUrl,
+      JSON.stringify(employeeDto),
+      {headers: this.headers})
+    .toPromise()
+    .then(response => response)
     .catch(this.handleError);
   }
 

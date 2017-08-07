@@ -3,7 +3,10 @@ package com.yandimirov.navi.config;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationConfig;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.ser.DefaultSerializerProvider;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -19,6 +22,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
   public void configureMessageConverters(
       final List<HttpMessageConverter<?>> converters
   ) {
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Stream.of(RequestView.class.getDeclaredClasses())
         .sequential()
         .map(
@@ -36,6 +40,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
                     }
                   };
               mapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, true);
+              mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+              mapper.setDateFormat(dateFormat);
               converter.setObjectMapper(mapper);
               return converter;
             })

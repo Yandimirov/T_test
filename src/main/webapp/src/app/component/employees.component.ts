@@ -10,6 +10,8 @@ import {Employee} from '../model/employee';
 import {CityService} from '../service/city.service';
 import {SelectItem} from 'primeng/primeng';
 import {GroupService} from '../service/group.service';
+import {City} from '../model/city';
+import {Group} from '../model/group';
 
 
 @Component({
@@ -40,6 +42,7 @@ export class EmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.loadEmployees();
     this.loadCities();
+    this.loadGroups();
     this.columns = [
       {field: 'id', header: 'ID'},
       {field: 'name', header: 'Name'},
@@ -73,6 +76,18 @@ export class EmployeesComponent implements OnInit {
     });
   }
 
+  loadGroups(): void {
+    this.groupService.getGroups()
+    .then(response => {
+      this.groups = response.map(group => {
+        return {
+          label: group.name,
+          value: group.id
+        };
+      });
+    });
+  }
+
   onPageChange(event: any): void {
     this.pageIndex = event.page;
     this.pageSize = event.rows;
@@ -83,25 +98,49 @@ export class EmployeesComponent implements OnInit {
     this.isNewEmployee = true;
     this.employee = new Employee();
     this.cityId = null;
+    this.groupId = null;
     this.displayDialog = true;
   }
 
   onSelectEmployee(event: any): void {
     this.isNewEmployee = false;
     this.employee = new Employee();
+    this.cityId = null;
+    this.groupId = null;
     for (const field in this.selectedEmployee) {
       if (this.selectedEmployee[field]) {
         this.employee[field] = this.selectedEmployee[field];
       }
     }
-    this.cityId = this.employee.city.id;
-    console.log(this.cityId);
+    if (this.employee.city) {
+      this.cityId = this.employee.city.id;
+    }
+    if (this.employee.group) {
+      this.groupId = this.employee.group.id;
+    }
     this.displayDialog = true;
   }
 
   save(): void {
+    if (this.cityId !== null) {
+      let city = new City();
+      city.id = this.cityId;
+      city.name = this.cities.find(c => c.value === this.cityId).label;
+      this.employee.city = city;
+    }
+    if (this.groupId !== null) {
+      let group = new Group();
+      group.id = this.groupId;
+      group.name = this.groups.find(g => g.value === this.cityId).label;
+      this.employee.group = group;
+    }
     if (this.isNewEmployee) {
-
+      this.employeeService.createEmployee(this.employee)
+      .then(response => {
+        let employees = [...this.employees];
+        employees.push(response.json());
+        this.employees = employees;
+      });
     } else {
       this.employeeService.updateEmployee(this.employee)
       .then(response => {

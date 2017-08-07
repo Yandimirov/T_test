@@ -50,6 +50,14 @@
       </div>
       <div class="ui-grid-row">
         <div class="ui-grid-col-4">
+          <label for="active">Active</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <p-toggleButton id="active" [(ngModel)]="employee.active" ></p-toggleButton>
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
           <label for="birthDate">Birth date</label>
         </div>
         <div class="ui-grid-col-8">
@@ -61,7 +69,13 @@
           <label for="city">City</label>
         </div>
         <div class="ui-grid-col-8" >
-          <p-dropdown id="city" [options]="cities" [(ngModel)]="cityId" autoWidth="false" [style]="{'width':'100%'}" placeholder="Select a City"></p-dropdown>
+          <p-dropdown id="city"
+                      [options]="cities"
+                      [(ngModel)]="cityId"
+                      autoWidth="false"
+                      [style]="{'width':'100%'}"
+                      placeholder="Select a City">
+          </p-dropdown>
         </div>
       </div>
       <div class="ui-grid-row">
@@ -69,7 +83,13 @@
           <label for="group">Group</label>
         </div>
         <div class="ui-grid-col-8">
-          <p-dropdown id="group" [options]="groups" [(ngModel)]="groupId" autoWidth="false" [style]="{'width':'100%'}" placeholder="Select a Group"></p-dropdown>
+          <p-dropdown id="group"
+                      [options]="groups"
+                      [(ngModel)]="groupId"
+                      autoWidth="false"
+                      [style]="{'width':'100%'}"
+                      placeholder="Select a Group">
+          </p-dropdown>
         </div>
       </div>
       <div class="ui-grid-row">

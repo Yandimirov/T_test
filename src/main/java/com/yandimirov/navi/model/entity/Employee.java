@@ -3,7 +3,6 @@ package com.yandimirov.navi.model.entity;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.yandimirov.navi.config.RequestView;
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,7 +23,6 @@ import java.util.Date;
 public class Employee {
 
   @Id
-  @GeneratedValue
   @Column(name = "EMPLOYEE_ID")
   @JsonView(RequestView.Base.class)
   private long id;
