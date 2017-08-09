@@ -27,8 +27,8 @@ public class Employee {
 
   @Id
   @Column(name = "EMPLOYEE_ID")
-  @GeneratedValue(strategy= GenerationType.AUTO, generator="employee_generator")
-  @SequenceGenerator(name="employee_generator", sequenceName="employees_seq")
+  @GeneratedValue(strategy = GenerationType.AUTO, generator = "employee_generator")
+  @SequenceGenerator(name = "employee_generator", sequenceName = "employees_seq")
   @JsonView(RequestView.Base.class)
   private long id;
 
