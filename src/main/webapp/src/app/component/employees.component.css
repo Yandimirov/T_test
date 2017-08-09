@@ -31,3 +31,7 @@
 .mat-table {
   overflow: auto;
 }
+
+.employee-field {
+  margin: 10px;
+}

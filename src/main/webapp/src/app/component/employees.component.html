@@ -31,8 +31,8 @@
             [responsive]="true"
             showEffect="fade"
             [modal]="true">
-    <div class="ui-grid" *ngIf="employee">
-      <div class="ui-grid-row">
+    <div class="ui-grid employee-dialog" *ngIf="employee">
+      <div class="ui-grid-row employee-field">
         <div class="ui-grid-col-4">
           <label for="name">Name</label>
         </div>
@@ -40,7 +40,7 @@
           <input pInputText id="name" [(ngModel)]="employee.name" />
         </div>
       </div>
-      <div class="ui-grid-row">
+      <div class="ui-grid-row employee-field">
         <div class="ui-grid-col-4">
           <label for="surName">Surname</label>
         </div>
@@ -48,7 +48,7 @@
           <input pInputText id="surName" [(ngModel)]="employee.surName" />
         </div>
       </div>
-      <div class="ui-grid-row">
+      <div class="ui-grid-row employee-field">
         <div class="ui-grid-col-4">
           <label for="active">Active</label>
         </div>
@@ -56,7 +56,7 @@
           <p-toggleButton id="active" [(ngModel)]="employee.active" ></p-toggleButton>
         </div>
       </div>
-      <div class="ui-grid-row">
+      <div class="ui-grid-row employee-field" >
         <div class="ui-grid-col-4">
           <label for="birthDate">Birth date</label>
         </div>
@@ -64,7 +64,7 @@
           <input pInputText id="birthDate" [(ngModel)]="employee.birthDate" />
         </div>
       </div>
-      <div class="ui-grid-row">
+      <div class="ui-grid-row employee-field">
         <div class="ui-grid-col-4">
           <label for="city">City</label>
         </div>
@@ -78,7 +78,7 @@
           </p-dropdown>
         </div>
       </div>
-      <div class="ui-grid-row">
+      <div class="ui-grid-row employee-field">
         <div class="ui-grid-col-4">
           <label for="group">Group</label>
         </div>
@@ -92,7 +92,7 @@
           </p-dropdown>
         </div>
       </div>
-      <div class="ui-grid-row">
+      <div class="ui-grid-row employee-field">
         <div class="ui-grid-col-4">
           <label for="phone">Phone</label>
         </div>
