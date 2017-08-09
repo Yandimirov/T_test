@@ -9,7 +9,7 @@ import {CommonModule} from '@angular/common';
 import {
   DataTableModule, SharedModule, PaginatorModule,
   ButtonModule, DialogModule, InputTextModule,
-  DropdownModule, ToggleButtonModule
+  DropdownModule, ToggleButtonModule, CalendarModule
 } from 'primeng/primeng';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -30,7 +30,8 @@ import {GroupService} from './service/group.service';
     BrowserAnimationsModule,
     InputTextModule,
     DropdownModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    CalendarModule
   ],
   declarations: [
     AppComponent,

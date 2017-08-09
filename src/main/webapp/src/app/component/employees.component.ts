@@ -142,6 +142,7 @@ export class EmployeesComponent implements OnInit {
         this.employees = employees;
       });
     } else {
+      console.log(this.employee);
       this.employeeService.updateEmployee(this.employee)
       .then(response => {
         let newEmployee = response.json();

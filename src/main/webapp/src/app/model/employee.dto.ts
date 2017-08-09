@@ -1,10 +1,12 @@
 import {Employee} from './employee';
+import 'moment';
+import moment = require('moment');
 
 export class EmployeeDto {
   id: number;
   name: string;
   surName: string;
-  birthDate: Date;
+  birthDate: string;
   cityId: number;
   phoneNum: string;
   active: boolean;
@@ -16,7 +18,7 @@ export class EmployeeDto {
     this.surName = employee.surName;
     this.phoneNum = employee.phoneNum;
     this.active = employee.active;
-    this.birthDate = employee.birthDate;
+    this.birthDate = moment(employee.birthDate, 'yyyy-MM-dd').format();
     if (employee.city) {
       this.cityId = employee.city.id;
     }
